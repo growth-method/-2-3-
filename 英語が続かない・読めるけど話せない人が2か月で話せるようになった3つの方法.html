@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語が話せるようになる引き出しメソッド</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --gold-dark: #9A7A2E;
+    --black: #0A0A0A;
+    --black-soft: #111111;
+    --black-card: #1A1A1A;
+    --black-border: #2A2A2A;
+    --white: #FFFFFF;
+    --white-muted: rgba(255,255,255,0.75);
+    --white-dim: rgba(255,255,255,0.45);
+  }
+
+  body {
+    background: #050505;
+    color: var(--white);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.5;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  /* ===== PAGE CONTAINER ===== */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    page-break-after: always;
+    box-sizing: border-box;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 52px;
+  }
+
+  /* ===== DECORATIVE ELEMENTS ===== */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .corner-mark {
+    position: absolute;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+    text-transform: uppercase;
+  }
+  .corner-mark.tl { top: 24px; left: 64px; }
+  .corner-mark.tr { top: 24px; right: 64px; }
+  .corner-mark.br { bottom: 24px; right: 64px; }
+  .corner-mark.bl { bottom: 24px; left: 64px; }
+
+  /* ===== CHAPTER LABEL ===== */
+  .chapter-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin: 10px 0;
+  }
+
+  /* ===== HEADLINE ===== */
+  .headline-en {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+  .headline-en .gold { color: var(--gold); }
+
+  .headline-ja {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .headline-ja .gold { color: var(--gold); }
+
+  .headline-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--white-muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  /* ===== RESULT BOX ===== */
+  .result-box {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+
+  .result-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .result-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+
+  .result-desc {
+    font-size: 13px;
+    color: var(--white-muted);
+    margin-top: 8px;
+  }
+
+  /* ===== KEY MESSAGE BOX ===== */
+  .key-message {
+    background: var(--gold);
+    padding: 12px 16px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .key-message .km-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .key-message .km-text {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--black);
+    line-height: 1.3;
+  }
+
+  /* ===== BODY TEXT ===== */
+  .body-text {
+    font-size: 13px;
+    color: var(--white-muted);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .body-text strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ===== NUMBERED LIST ===== */
+  .num-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+
+  .num-list li {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: var(--white-muted);
+  }
+
+  .num-list li .num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 24px;
+    margin-top: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== CARD ROW ===== */
+  .card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 12px 0;
+  }
+
+  .card {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    padding: 12px 14px;
+  }
+
+  .card-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .card-label.ng { color: #E05C5C; }
+  .card-label.ok { color: #5CB85C; }
+
+  .card-body {
+    font-size: 12px;
+    color: var(--white-muted);
+    line-height: 1.5;
+  }
+
+  /* ===== STEP BOXES ===== */
+  .step-box {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    padding: 12px 16px;
+    margin-bottom: 6px;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+
+  .step-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .step-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .step-quote {
+    font-size: 13px;
+    color: var(--white-dim);
+    font-style: italic;
+    padding-left: 38px;
+  }
+
+  /* ===== TABLE ===== */
+  .flow-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+
+  .flow-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--black-border);
+    font-size: 12px;
+  }
+
+  .flow-table td:first-child {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+    width: 120px;
+  }
+
+  .flow-table td:last-child {
+    color: var(--white-muted);
+  }
+
+  /* ===== WARN BOX ===== */
+  .warn-box {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+
+  .warn-box .warn-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .warn-box p {
+    font-size: 13px;
+    color: var(--white-muted);
+    line-height: 1.8;
+  }
+
+  .warn-box strong {
+    color: var(--white);
+  }
+
+  /* ===== DASH LIST ===== */
+  .dash-list {
+    list-style: none;
+    margin: 10px 0;
+  }
+
+  .dash-list li {
+    display: flex;
+    gap: 14px;
+    font-size: 12px;
+    color: var(--white-muted);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .dash-list li::before {
+    content: '—';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ===== CTA BOX ===== */
+  .cta-box {
+    background: var(--gold);
+    padding: 32px 36px;
+    text-align: center;
+    margin: 32px 0 0;
+  }
+
+  .cta-box .cta-main {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+
+  .cta-box .cta-sub {
+    font-size: 14px;
+    color: rgba(0,0,0,0.7);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .cta-box .cta-keyword {
+    display: inline-block;
+    background: var(--black);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 0.1em;
+    padding: 14px 40px;
+    margin-bottom: 8px;
+  }
+
+  .cta-box .cta-note {
+    font-size: 12px;
+    color: rgba(0,0,0,0.5);
+  }
+
+  /* ===== SKILL CARD GRID ===== */
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .skill-card {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    padding: 24px 20px;
+  }
+
+  .skill-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .skill-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+  }
+
+  /* ===== WORKSHEET ===== */
+  .worksheet-box {
+    background: var(--black-card);
+    border: 1px solid var(--black-border);
+    padding: 12px 16px;
+    margin: 10px 0;
+  }
+
+  .ws-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .ws-row {
+    margin-bottom: 8px;
+  }
+
+  .ws-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white-muted);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ws-line {
+    border-bottom: 1px solid var(--black-border);
+    height: 32px;
+    margin-bottom: 8px;
+  }
+
+  .ws-hint {
+    font-size: 11px;
+    color: var(--white-dim);
+    font-style: italic;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: white; }
+    .page { margin: 0; width: 100%; box-shadow: none; page-break-after: always; }
+  }
+
+  @media screen and (max-width: 860px) {
+    body { background: var(--black); }
+
+    .page {
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      padding: 40px 24px;
+      margin: 0 0 2px 0;
+      page-break-after: auto;
+    }
+
+    .headline-en { font-size: 48px; }
+    .headline-ja { font-size: 22px; }
+    .result-number { font-size: 36px !important; }
+
+    .card-row { grid-template-columns: 1fr; }
+    .skill-grid { grid-template-columns: 1fr; }
+
+    .result-box { max-width: 100% !important; }
+    a[href*="instagram"] > div { max-width: 100% !important; }
+
+    .key-message .km-text { font-size: 18px; }
+    .cta-box { padding: 24px 20px; }
+    .cta-main { font-size: 18px; }
+    .cta-keyword { font-size: 14px; padding: 10px 24px; }
+
+    .flow-table td { font-size: 12px; padding: 10px 12px; }
+    .corner-mark { display: none; }
+
+    .ws-title { font-size: 10px; }
+    .step-box { padding: 14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== PAGE 1: COVER ===== -->
+<div class="page">
+  <div class="corner-mark tl">Free Guide 2026</div>
+  <div class="corner-mark tr">P. 01 / 05</div>
+  <div class="corner-mark br">©  English Growth Method</div>
+
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+    <div class="chapter-label">読める、でも話せない。その理由と答え</div>
+
+    <div class="headline-ja">
+      英語が続かない・<br>
+      読めるけど話せない人が<br>
+      <span class="gold">3ヶ月で話せるようになった</span><br>
+      3つの方法
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="body-text" style="max-width: 480px;">
+      独自の<strong>「引き出しメソッド」</strong>を使って、受講生が実際に出した成果と、今日からできる3つのスキルをすべて公開します。
+    </p>
+
+    <div class="result-box" style="max-width: 520px;">
+      <div class="result-label">Result — 受講生の実績</div>
+      <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 12px;">
+        <div>
+          <div class="result-number" style="font-size: 48px;">3ヶ月</div>
+          <div class="result-desc" style="font-size: 14px;">中学英語レベルからスタートして、<br>ここまで話せるようになった</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://www.instagram.com/reel/DYrn5YPSGFN/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==" target="_blank" style="text-decoration: none; display: block; max-width: 520px;">
+      <div style="background: var(--black-card); border: 1px solid var(--black-border); padding: 20px 24px; display: flex; align-items: center; gap: 20px; cursor: pointer; transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--black-border)'">
+        <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="5,3 19,12 5,21" fill="white"/>
+          </svg>
+        </div>
+        <div style="flex: 1;">
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 4px;">REEL — 実際の受講生の英語を見る</div>
+          <div style="font-size: 14px; color: var(--white); font-weight: 700; margin-bottom: 2px;">引き出しメソッドでここまで話せるようになった</div>
+          <div style="font-size: 12px; color: var(--white-dim);">Instagram Reelで確認する →</div>
+        </div>
+      </div>
+    </a>
+
+    <div style="margin-top: 40px;">
+      <div class="headline-sub">引き出しメソッド — The Hikidashi Method</div>
+      <div style="width: 60px; height: 1px; background: var(--gold-dark);"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 2: 前提 ===== -->
+<div class="page">
+  <div class="corner-mark tl">Skill 00 — 前提</div>
+  <div class="corner-mark tr">P. 02 / 05</div>
+  <div class="corner-mark br">© English Growth Method</div>
+
+  <div class="chapter-label">Chapter 01 — なぜ話せないのか</div>
+
+  <div class="headline-ja">なぜ英語が<br><span class="gold">読めるのに話せない</span>のか</div>
+  <div class="divider"></div>
+
+  <p class="body-text">
+    日本の英語教育は机に座って、<strong>文法・リーディング</strong>を中心に勉強する<strong>テストのための英語学習</strong>が主流です。英語は読めるし、なんとなく聞けるように基礎はしっかり身についている。けど、英語が口から出てこない。
+  </p>
+
+  <div class="warn-box">
+    <div class="warn-title">⚠ やるべきことは「英会話の勉強」（≠英語の勉強）</div>
+    <p>
+      <div style="font-size: 18px; font-weight: 900; color: var(--white); text-align: center; margin: 12px 0; letter-spacing: 0.05em;">英会話の勉強＝リスニング＋スピーキング</div>
+      <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 4px;">学校式の勉強法では話せるようにはならない。英会話の力が伸びないから成果が出ない→面白くない→継続できない。</div>
+    </p>
+  </div>
+
+  <div class="key-message">
+    <div class="km-label">Key Message</div>
+    <div class="km-text">話すためには<br>2つのアプローチが必要</div>
+  </div>
+
+  <div class="card-row">
+    <div class="card">
+      <div class="card-label" style="color: var(--gold);">アプローチ① — リスニング力</div>
+      <div class="card-body">
+        相手の英語を理解する力。<strong>速読・語彙力（イディオム・スラング）・リンキング（going to = gonna）</strong>対策の3つを中心に、英語を「耳で理解できる力」を養う。
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label" style="color: var(--gold);">アプローチ② — スピーキング力</div>
+      <div class="card-body">
+        自分の言いたいことを英語で言える力。<strong>トピック英作文・瞬間英作文・即興スピーチ</strong>の3つで鍛える。これが引き出しメソッドの核心。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PAGE 3: トピック英作文 ===== -->
+<div class="page">
+  <div class="corner-mark tl">Skill 01 — トピック英作文</div>
+  <div class="corner-mark tr">P. 03 / 05</div>
+  <div class="corner-mark br">© English Growth Method</div>
+
+  <div class="chapter-label">Chapter 02 — スピーキング力を鍛える</div>
+
+  <div class="headline-ja"><span class="gold">スピーキング力</span>を<br>鍛える3つの練習</div>
+  <div class="divider"></div>
+
+  <p class="body-text">
+    海外で英語を話す場合、必ずと言っていいほどこれらのトピックについて話します。<strong>自己紹介・趣味・仕事・恋愛・将来・海外旅行 etc..——</strong>まずここを流暢にすることが最短ルートです。
+  </p>
+
+  <div class="key-message">
+    <div class="km-label">Definition</div>
+    <div class="km-text">トピック英作文＝<br>使える「型」を増やす作業</div>
+  </div>
+
+  <p class="body-text" style="margin-top: 20px;">
+    たとえば趣味の筋トレについて英作文をする。
+  </p>
+
+  <div class="result-box" style="margin: 12px 0 20px;">
+    <div class="result-label">Example</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--white); margin-bottom: 8px;">I have been working out for 3 years.</div>
+    <div style="font-size: 13px; color: var(--white-dim);">この文を暗記して、何度も繰り返し使う（独り言でも可）。<br>そうすると、条件反射で口から出てくるようになる。</div>
+  </div>
+
+  <p class="body-text">
+    ここまで習得度が深まれば、<strong>文を少し変形させることも可能</strong>になります。
+  </p>
+
+  <div class="result-box" style="margin: 12px 0 20px;">
+    <div class="result-label">応用 — 型を転用する</div>
+    <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; color: var(--gold); margin-bottom: 4px;">I have been studying English for 3 years.</div>
+    <div style="font-size: 13px; color: var(--white-dim);">一つの文を深く暗記すれば、他のトピックでも使える文が完成する。これが「型」。</div>
+  </div>
+
+  <p class="body-text">
+    トピック英作文はこの<strong>「型」を増やす作業</strong>です。型が増えるほど、話せるトピックが広がっていきます。
+  </p>
+</div>
+
+<!-- ===== PAGE 4: WORKSHEET ===== -->
+<div class="page">
+  <div class="corner-mark tl">Worksheet — 実践</div>
+  <div class="corner-mark tr">P. 04 / 05</div>
+  <div class="corner-mark br">© English Growth Method</div>
+
+  <div class="chapter-label">Chapter 03 — 実際にやってみよう</div>
+
+  <div class="headline-ja"><span class="gold">ワークシート</span><br>今日から始める引き出し作り</div>
+  <div class="divider"></div>
+
+  <p class="body-text">
+    読んで終わりにしないでください。今日このページに書き込むだけで、あなたの最初の「引き出し」が完成します。
+  </p>
+
+  <div class="worksheet-box">
+    <div class="ws-title">Step 01 — 今日のトピックを決める</div>
+    <div class="ws-row">
+      <div class="ws-label">Topic（例：自己紹介 / 趣味 / 仕事 / 将来の夢）</div>
+      <div class="ws-line"></div>
+      <div class="ws-hint">海外で話す確率が高そうなテーマから始める。英語学習・旅・仕事などがおすすめ。</div>
+    </div>
+  </div>
+
+  <div class="worksheet-box">
+    <div class="ws-title">Step 02 — そのトピックで英文を1つ作る</div>
+    <div class="ws-row">
+      <div class="ws-label">My sentence</div>
+      <div class="ws-line"></div>
+      <div class="ws-hint">完璧じゃなくていい。「自分が言いたいこと」を英語にするだけ</div>
+    </div>
+    <div class="ws-row" style="margin-top: 8px;">
+      <div class="ws-label">応用文（単語や主語を変えてみる）</div>
+      <div class="ws-line"></div>
+      <div class="ws-hint">例）working out → studying English に変えるだけで別の文が完成する</div>
+    </div>
+  </div>
+
+  <div class="worksheet-box">
+    <div class="ws-title">Step 03 — 声に出して5回繰り返す → 翌日も独り言で使う</div>
+    <div class="ws-row">
+      <div class="ws-label">繰り返した回数</div>
+      <div style="display: flex; gap: 12px; margin: 8px 0;">
+        <div style="width: 32px; height: 32px; border: 1px solid var(--black-border); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white-dim);">1</div>
+        <div style="width: 32px; height: 32px; border: 1px solid var(--black-border); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white-dim);">2</div>
+        <div style="width: 32px; height: 32px; border: 1px solid var(--black-border); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white-dim);">3</div>
+        <div style="width: 32px; height: 32px; border: 1px solid var(--black-border); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white-dim);">4</div>
+        <div style="width: 32px; height: 32px; border: 1px solid var(--black-border); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white-dim);">5</div>
+      </div>
+      <div class="ws-hint">条件反射で口から出てくるまで繰り返す。これが「型」を体に入れる唯一の方法</div>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-title">ここからは一人だと厳しい</div>
+    <p>
+      引き出しを増やす作業は一人でできます。しかし<strong>「自分の弱点を把握すること」「目標までのロードマップを設計すること」「継続できる仕組み」</strong>などは、一人では限界があります。次のページで、その解決策をお伝えします。
+    </p>
+  </div>
+</div>
+
+<!-- ===== PAGE 5: CTA ===== -->
+<div class="page">
+  <div class="corner-mark tl">Final — Next Step</div>
+  <div class="corner-mark tr">P. 05 / 05</div>
+  <div class="corner-mark br">© English Growth Method</div>
+
+  <div class="chapter-label">Chapter 04 — 次の一歩</div>
+
+  <div class="headline-ja">話せるようになるまでの<br>道筋は<span class="gold">見えた</span>はずです。</div>
+  <div class="divider"></div>
+
+  <p class="body-text">
+    でも正直に言います。<strong>一人でここまでやり切れる人は、ほとんどいません。</strong>
+  </p>
+
+  <div style="background: var(--black-card); border: 1px solid var(--black-border); padding: 14px 18px; margin: 10px 0;">
+    <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 10px;">継続できない本当の理由</div>
+    <div style="display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--black-border);">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); min-width: 20px;">01</div>
+      <div style="font-size: 12px; color: var(--white-muted); line-height: 1.5;">学校式の勉強法を再開しても<strong style="color:var(--white);">話せるようにならない</strong> → 成果が出ない（英会話の力が伸びない）</div>
+    </div>
+    <div style="display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--black-border);">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); min-width: 20px;">02</div>
+      <div style="font-size: 12px; color: var(--white-muted); line-height: 1.5;">成果が出ないから<strong style="color:var(--white);">面白くない</strong> → モチベーションがなくなる</div>
+    </div>
+    <div style="display: flex; gap: 14px; padding: 8px 0;">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 700; color: var(--gold); min-width: 20px;">03</div>
+      <div style="font-size: 12px; color: var(--white-muted); line-height: 1.5;">モチベーションがなくなったら<strong style="color:var(--white);">継続できない</strong> → これがほとんどの人が諦める瞬間</div>
+    </div>
+  </div>
+
+  <p class="body-text" style="margin: 10px 0;">
+    引き出しを増やす作業は一人でできます。しかし<strong>「自分の弱点を把握すること」「目標までのロードマップを設計すること」「継続できる仕組み」</strong>などは、一人では限界があります。
+  </p>
+
+  <div class="cta-box">
+    <div class="cta-main">無料個別面談に申し込む</div>
+    <div class="cta-sub">あなたの状況を聞いて、あなたに合う具体的な勉強方法を見つけます。</div>
+    <div style="margin: 12px 0;">
+      <div style="font-size: 12px; color: rgba(0,0,0,0.5); margin-bottom: 6px;">DMに</div>
+      <div class="cta-keyword">「面談」</div>
+      <div style="font-size: 12px; color: rgba(0,0,0,0.5); margin-top: 6px;">と送ってください</div>
+    </div>
+    <div style="font-size: 10px; color: rgba(0,0,0,0.6); margin-bottom: 4px;">※面談では、フィードバックと継続できる環境を提供する有料コミュニティのご紹介もします。</div>
+    <div style="font-size: 10px; color: rgba(0,0,0,0.6);">※合わないと感じたら、その場で気軽に断ってOK。押し売りはしません。</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">
+    <div style="background: var(--black-card); border: 1px solid var(--black-border); padding: 14px 18px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); min-width: 60px;">01</div>
+      <div style="font-size: 13px; font-weight: 700; color: var(--white);">あなたの現状・目標をヒアリング</div>
+    </div>
+    <div style="background: var(--black-card); border: 1px solid var(--black-border); padding: 14px 18px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); min-width: 60px;">02</div>
+      <div style="font-size: 13px; font-weight: 700; color: var(--white);">合う勉強法・次の3ステップを一緒に整理</div>
+    </div>
+    <div style="background: var(--black-card); border: 1px solid var(--black-border); padding: 14px 18px; display: flex; align-items: center; gap: 16px;">
+      <div style="font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); min-width: 60px;">03</div>
+      <div style="font-size: 13px; font-weight: 700; color: var(--white);">お互いに合うかどうかを率直に見極める</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
